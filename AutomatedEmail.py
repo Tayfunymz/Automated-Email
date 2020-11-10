@@ -15,16 +15,16 @@ def log_in_to_google_sheets():
 
 def log_in_to_google_gmail():
     s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.starttls() 
+    s.starttls()
     s.login("email@gmail.com", "password")
     return s
-    
+
 
 def send_email():
     sheet = log_in_to_google_sheets()
     s = log_in_to_google_gmail()
-    row = sheet.row_values(1)  
-    col = sheet.col_values(1)  
+    row = sheet.row_values(1)
+    col = sheet.col_values(1)
     cell = sheet.cell(1,2).value
     numRows = sheet.row_count
 
@@ -35,9 +35,9 @@ def send_email():
         email = sheet.cell(i,2).value
         password = sheet.cell(i,3).value
         subject = 'subject'
-        body = "body"
+        body = "Email: " + email + "\nPassword: " + password
         message = f'Subject: {subject}\n\n{body}'
-        s.sendmail("tayfunymz@gmail.com", "tayfunymz@gmail.com", message) 
+        s.sendmail("tayfunymz@gmail.com", "tayfunymz@gmail.com", message)
         pprint("Sending email for... " + name)
 
     s.quit()
