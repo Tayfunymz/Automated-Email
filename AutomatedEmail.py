@@ -37,7 +37,7 @@ def send_email():
         subject = 'subject'
         body = "Email: " + email + "\nPassword: " + password
         message = f'Subject: {subject}\n\n{body}'
-        s.sendmail("tayfunymz@gmail.com", "tayfunymz@gmail.com", message)
+        s.sendmail("tayfunymz@gmail.com", email, message)
         pprint("Sending email for... " + name)
 
     s.quit()
